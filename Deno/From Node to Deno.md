@@ -30,13 +30,15 @@
 
 ## Electron
 
-Electron 使用 Chromium 作为界面来运行 Web 环境。可以通过 Node.js + Electron 创建桌面应用程序。Deno 替代方案么？
+Electron 使用 `Chromium` 作为界面来运行 Web 环境。可以通过 `Node.js + Electron` 创建桌面应用程序。Deno 替代方案么？
 
 ![Electron](https://aralroca.com/images/blog-images/55.png)
 
-好吧，现在，Electron远不能在Deno下执行。我们必须寻找替代方案。由于Deno是用Rust制作的，因此我们可以使用Web视图锈迹绑定在Deno中运行Destkop应用程序。
+好吧，现在，`Electron` 远不能在Deno下执行。我们必须寻找替代方案。由于Deno是用Rust制作的，因此我们可以使用Web视图锈迹绑定在Deno中运行 `Destkop` 应用程序。
 
-这样，我们可以使用本机OS Web视图来运行任意数量的Web视图。
+这样一来，我们可以使用原生操作系统的`webview`来运行我们想要的`webview`。
+
+[//]:<> (这样，我们可以使用本机OS Web视图来运行任意数量的Web视图。)
 
 回购：[https://github.com/eliassjogreen/deno_webview](https://github.com/eliassjogreen/deno_webview)
 
@@ -82,11 +84,11 @@ await Promise.all([webview1.run(), webview2.run()]);
 
 ## Forever / PM2
 
-[Forever](https://github.com/foreversd/forever) 和 [PM2](https://github.com/Unitech/pm2) 是用于确保给定脚本作为守护程序连续运行的CLI工具。与Forever不同，PM2更完整，还可以用作负载平衡器。两者在 Node 中都非常有用，但是我们可以在Deno 中使用它们吗？
+[Forever](https://github.com/foreversd/forever) 和 [PM2](https://github.com/Unitech/pm2) 是CLI工具，用于确保给定脚本作为守护进程连续运行。与Forever不同的是，PM2的功能更完善，同时还可以作为负载平衡器。这两个工具在Node中都非常有用，但是在Deno中可以使用吗？
 
-Forever 仅用于 Node，因此使用它是不可行的。另一方面，借助 PM2，我们可以运行非节点脚本，因此我们仍可以将其用于 Deno。
+`Forever`只适用于Node，所以使用它是不可行的。另一方面，用PM2我们可以运行非Node脚本，所以我们还是可以在Deno中使用它。
 
-建立app.sh档案
+创建一个`app.sh`文件
 
 ```bash
 #!/bin/bash
@@ -103,11 +105,11 @@ deno run -A myCode.ts
 
 ## Express / Koa
 
-[Express](https://github.com/expressjs/express) 和 [Koa](https://github.com/koajs/koa) 是最著名的Node框架。他们以其强大的路由系统和HTTP帮助器（重定向，缓存等）而闻名。我们可以在Deno中使用它们吗？答案不是...但是有一些替代方法。
+[Express](https://github.com/expressjs/express) 和 [Koa](https://github.com/koajs/koa) 是最著名的Node框架。它们以其强大的路由系统和HTTP助手（重定向、缓存等）而闻名。我们可以在Deno中使用它们吗？答案是不能.....。但也有一些替代方案。
 
 ## Http（标准库）
 
-Deno自己的STD库已经满足Express或Koa提供的许多需求。[https://deno.land/std/http/](https://deno.land/std/http/)。
+Deno自己的STD库已经涵盖了`Express`或`Koa`提供的许多需求。[https://deno.land/std/http/](https://deno.land/std/http/)。
 
 ``` typescript
 import { ServerRequest } from "https://deno.land/std/http/server.ts";
@@ -121,7 +123,9 @@ const cookies = getCookies(request);
 console.log("cookies:", cookies);
 ```
 
-但是，声明路线的方法并不是很吸引人。因此，让我们看看更多替代方案。
+但是，这种方式并不是很吸引人。因此，让我们看看更多替代方案。
+
+[//]:<> (the way to declare routes is not very attractive. )
 
 ## Oak (第三方库)
 
@@ -175,7 +179,7 @@ console.log(`app listening on port ${server.port}`);
 
 ## MongoDB
 
-[MongoDB](https://github.com/mongodb/mongo) 是具有巨大的可扩展性和灵活性的文档数据库。在JavaScript生态系统中已被广泛使用，使用它的许多堆栈（如MEAN或MERN）。非常受欢迎
+[MongoDB](https://github.com/mongodb/mongo) 是一个文档数据库，具有巨大的可扩展性和灵活性。在JavaScript生态系统中已经被广泛使用，有很多像`MEAN`或`MERN`这样的堆栈都在使用它。它是非常受欢迎的。
 
 ```typescript
 import { init, MongoClient } from "https://deno.land/x/mongo@v0.6.0/mod.ts";
@@ -240,7 +244,7 @@ await client.end();
 
 ## MySQL / MariaDB
 
-与`MongoDB`和`PostgresSQL`一样，还有[MySQL](https://github.com/mysqljs/mysql)/[MariaDB](https://github.com/mariadb-corporation/mariadb-connector-nodejs)的驱动程序。
+与`MongoDB`和`PostgresSQL`一样，还有[MySQL](https://github.com/mysqljs/mysql)/[MariaDB](https://github.com/mariadb-corporation/mariadb-connector-nodejs)的驱动。
 
 [https://github.com/manyuanrong/deno_mysql](https://github.com/manyuanrong/deno_mysql)
 
@@ -264,7 +268,7 @@ console.log(result);
 
 ## Redis
 
-[Redis](https://github.com/NodeRedis/node-redis) 是最著名的缓存数据库，它也具有Deno驱动程序。
+[Redis](https://github.com/NodeRedis/node-redis) 是最著名的缓存数据库，也有Deno的驱动.
 
 [https://github.com/keroxp/deno-redis](https://github.com/keroxp/deno-redis)
 
@@ -281,7 +285,7 @@ const example = await redis.get("example");
 
 ## Nodemon
 
-[Nodemon](https://github.com/remy/nodemon) 在开发环境中用于监视文件中的任何更改，从而自动重新启动服务器。这使节点开发更加有趣，而无需手动停止和重新启动服务器以查看应用的更改。可以在Deno中使用吗？
+[Nodemon](https://github.com/remy/nodemon) 开发环境中用于监控你的文件的任何变化，自动重启服务器。这使节点开发更加有趣，无需手动停止并重启服务器来查看应用的变化。它可以在Deno中使用吗？
 
 抱歉，您不能...但是仍然有另一种选择：Denon。
 
@@ -299,7 +303,7 @@ const example = await redis.get("example");
 
 在`Node.js`生态系统中，有许多替代品可供测试跑步者使用。但是，没有一种官方方法可以测试`Node.js`代码。
 
-在Deno中，有一种官方方法，您可以使用测试std库。
+在Deno中，有一种官方方法，您可以使用测试`std`库。
 
 [https://deno.land/std/testing](https://deno.land/std/testing)
 
@@ -321,11 +325,11 @@ Deno.test('My first test', async () => {
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gexsz3vhemj30cf04u74e.jpg)
 
-Deno的优势之一是我们可以将ESmodules与TypeScript一起使用，而无需诸如[Webpack](https://github.com/webpack/webpack)，[Parcel](https://github.com/parcel-bundler/parcel)或[Rollup](https://github.com/rollup/rollup)之类的捆绑器。
+Deno的优势之一是我们可以将`ESmodules`与`TypeScript`一起使用，而无需诸如[Webpack](https://github.com/webpack/webpack)，[Parcel](https://github.com/parcel-bundler/parcel)或[Rollup](https://github.com/rollup/rollup)之类的工具。
 
-但是，您可能想知道是否给定了一棵文件树，我们可以制作一个捆绑包，将所有内容放到一个文件中以在网络上运行它。
+然而，可能你会想，如果给定一个文件的树，我们是否可以打包，把所有的东西都放在一个文件里，让它在网上运行。
 
-好吧，有可能，是的。我们可以使用Deno的CLI做到这一点。因此，不需要第三方捆绑程序。
+那么，这是有可能的，是的。我们可以通过Deno的`CLI`来实现。因此，不需要第三方的工具实现。
 
 ```bash
 ➜ deno bundle myLib.ts myLib.bundle.js
@@ -343,7 +347,7 @@ Deno的优势之一是我们可以将ESmodules与TypeScript一起使用，而无
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gext2kv18hj3046046dfm.jpg)
 
-在过去的几年中，[Prettier](https://prettier.io/)在JavaScript生态系统中已广为人知，因为有了它，您不必担心格式化文件。
+在过去的几年中，[Prettier](https://prettier.io/)在 JavaScript 生态系统中已广为人知，因为有了它，您不必担心格式化文件。
 
 事实是，它仍然可以在Deno上使用，但是失去了意义，因为Deno有自己的格式化程序。
 
@@ -357,9 +361,9 @@ Deno的优势之一是我们可以将ESmodules与TypeScript一起使用，而无
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gext47qcsmj305k00wt8h.jpg)
 
-使用Deno，`package.json`不再存在。我真正想念的一件事是在中声明的脚本`package.json`。
+使用Deno，`package.json`已经不存在了。我非常怀念的一件事就是在`package.json`中声明的脚本。
 
-一个简单的解决方案是使用`makefile`和一起执行`make`。但是，如果您错过了npm语法，那么Deno会有一个npm样式的脚本运行器：
+一个简单的解决办法是使用`makefile`，用`make`执行。但是，如果你怀念npm语法，有一个npm风格的脚本运行器，用于Deno。
 
 [https://github.com/umbopepato/velociraptor](https://github.com/umbopepato/velociraptor)
 
@@ -378,13 +382,13 @@ scripts:
 ➜  vr run <SCRIPT>
 ```
 
-另一个替代品是[denox](https://github.com/BentoumiTech/denox)，与Velociraptor非常相似。
+另一个替代品是[denox](https://github.com/BentoumiTech/denox)，与`Velociraptor`非常相似。
 
 Nvm
 
-[Nvm](https://github.com/nvm-sh/nvm)是一个CLI，用于管理多个活动Node版本，以便根据项目轻松升级或降级版本。
+[Nvm](https://github.com/nvm-sh/nvm)是一个`CLI`，用于管理多个活动的Node版本，根据项目的不同，轻松升级或降级版本。
 
-nvm在Deno中的等效项是dvm。
+在Deno中，`Nvm`相当于`dvm`。
 
 [https://github.com/axetroy/dvm](https://github.com/axetroy/dvm)
 
@@ -394,21 +398,21 @@ nvm在Deno中的等效项是dvm。
 
 ## Npx
 
-[NPX](https://github.com/npm/npx)在最近几年已经变得非常流行，而无需安装它们执行NPM包。现在，由于Deno是一个独立的生态系统，因此npm内将不存在许多项目。那么，我们如何执行Deno模块而不必将其安装`deno install https://url-of-module.ts`
+[NPX](https://github.com/npm/npx)在近几年非常流行，可以不用安装就可以执行npm包。现在很多项目都不会在npm中存在，因为Deno是一个独立的生态系统。那么，我们如何用 `deno installhttps://url-of-module.ts`，不用安装就能执行Deno模块呢？
 
-以与运行项目相同的方式，而不是文件，放置模块的URL：
+就像我们运行项目一样，我们在运行项目时，我们把模块的`URL`代替了文件。
 
 ```bash
 ➜  deno run https://deno.land/std/examples/welcome.ts
 ```
 
-如您所见，不仅我们必须记住模块的名称，而且还要记住整个URL，这使它的使用更加困难。另一方面，它提供了更大的灵活性，因为我们可以运行任何文件，而不仅仅是在package.jsonlike中指定为二进制文件npx。
+如您所见，不仅我们必须记住模块的名称，而且还要记住整个URL，这使它的使用更加困难。另一方面，它提供了更大的灵活性，因为我们可以运行任何文件，而不仅仅是像npx这样在`package.json`中指定的二进制文件。
 
 ## 在Docker上运行
 
-要在Docker内部运行Deno，我们可以创建以下Dockerfile：
+要在`Docker`内部运行Deno，我们可以创建以下`Dockerfile`：
 
-```
+```bash
 FROM hayd/alpine-deno:1.0.0
 
 EXPOSE 1993  # Port.
@@ -436,7 +440,9 @@ Repo: [https://github.com/hayd/deno-docker](https://github.com/hayd/deno-docker)
 
 ## Run as a lambda
 
-要将Deno用作lambda，Deno STD库中有一个模块。[https://deno.land/x/lambda](https://deno.land/x/lambda)。
+要将Deno作为`lambda`，需要`Deno STD`库中有一个模块。[https://deno.land/x/lambda](https://deno.land/x/lambda)。
+
+[//]: <> (要使用Deno作为lambda，在Deno STD库中有一个模块)
 
 ```typescript
 import {
@@ -459,14 +465,14 @@ export async function handler(
 
 ## 参考
 
-- Vercel中的Deno：[https://github.com/lucacasonato/now-deno](https://github.com/lucacasonato/now-deno)
-- AWS中的Deno：[https://blog.begin.com/deno-runtime-support-for-architect-805fcbaa82c3](https://blog.begin.com/deno-runtime-support-for-architect-805fcbaa82c3)
+- `Vercel`中的Deno：[https://github.com/lucacasonato/now-deno](https://github.com/lucacasonato/now-deno)
+- `AWS`中的Deno：[https://blog.begin.com/deno-runtime-support-for-architect-805fcbaa82c3](https://blog.begin.com/deno-runtime-support-for-architect-805fcbaa82c3)
 
 ## 小结
 
-我确定我忘记了一些Node主题以及它们的Deno替代方案，让我知道您想让我解释的内容是否有所遗漏。我希望本文能帮助您与Deno一起破冰。
+我肯定我会忘记了一些Node主题以及它们的Deno替代方案，如果有什么遗漏的地方需要我解释，请告诉我。希望这篇文章能帮助你打破Deno的僵局。
 
-要探索可与Deno一起使用的所有库：
+要探索你可以使用Deno的所有库。
 
 - [https://deno.land/std](https://deno.land/std)
 - [https://deno.land/x](https://deno.land/x)
