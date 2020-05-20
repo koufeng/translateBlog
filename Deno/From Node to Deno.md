@@ -1,6 +1,6 @@
 # 从 Node 到 Deno
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1gexm53yyjqj30qn0c0q4e.jpg)
+![从 Node 到 Deno](https://tva1.sinaimg.cn/large/007S8ZIlly1gexm53yyjqj30qn0c0q4e.jpg)
 
 > 原文地址: 《[From Node to Deno](https://aralroca.com/blog/from-node-to-deno)》
 
