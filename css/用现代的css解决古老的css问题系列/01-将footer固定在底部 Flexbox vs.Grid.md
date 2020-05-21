@@ -1,6 +1,6 @@
-# 将footer固定在下面: Flexbox vs Grid
+# 将footer固定在底部: Flexbox vs Grid
 
-> 原文地址: 《[From Node to Deno](https://aralroca.com/blog/from-node-to-deno)》
+> 原文地址: 《[Keep the Footer at the Bottom: Flexbox vs. Grid](https://aralroca.com/blog/from-node-to-deno)》
 
 多年来，我不断地参考 Matthew James Taylor 的这篇[文章](https://matthewjamestaylor.com/bottom-footer)，寻找一种方法，无论页面内容的长度如何，都能让网页`footer`保持在页面底部。这个方法依赖于设置一个footer高度，虽然不能扩展，但在 BF（Flexbox之前）是一个非常好的解决方案。
 
@@ -89,4 +89,4 @@ main {
 
 另一方面，`flexbox`方法可以在不同的模板中使用，在中间部分有多个块元素的情况下，例如，在存档页中使用一系列的`<article>`元素，而不是单一的`<main>`。
 
-所以，就像所有的技术一样，这取决于项目的不同：) 
+所以，就像所有的技术一样，这取决于项目的不同：)
