@@ -24,7 +24,7 @@
 .flexbox {
   display: flex;
 
-  // Ensure content elements fill up the .column
+  // 确保内容元素填满.column
   .element {
     height: 100%;
   }
@@ -40,7 +40,7 @@ Grid 解决方案
 ``` less
 .grid {
   display: grid;
-  // Essentially switch the default axis
+  // 切换默认的轴默认属性
   grid-auto-flow: column;
 }
 ```
@@ -52,7 +52,7 @@ Grid 解决方案
   display: grid;
   grid-auto-flow: column;
   
-  // Ensure content elements fill up the .column
+  // 确保内容元素填满.column
   .element {
     height: 100%;
   }
@@ -85,14 +85,14 @@ Grid 解决方案
 $col_gap: 1rem;
 
 .flexbox.col-3 {
-  // Explicitly needs to be defined to wrap 
-  // overflow items to the next virtual row
+  // 需要定义 wrap 属性
+  // 超出到下一行
   flex-wrap: wrap;
 
   .column {
-    // "hack" for no gap property
+    // "hack" for 元素间隙
     margin: $col_gap/2;
-    // define calculation for browser to use on the width
+    // 计算宽度
     max-width: calc((100% / 3) - #{$col_gap});
   }
 }
