@@ -96,3 +96,74 @@ html 内容：
 
 接下来，你可能会想知道为什么我们要为这个锚点外添加一层。原因是我们需要用它来为链接创建一个 "scroll track"。以使链接可以存在于其中。
 
+`position: sticky` 会根据`element`在`dom`中的位置呈现`position`属性，然后会根据元素`top`的值，展示在窗口中，然而，我们把链接放在文档的最后，所以如果没有一些帮助，它基本上不会被选中。
+
+我们将使用 外层元素`.back-to-top-wrapper`和 `position: absolute` 属性来改变`link`位置 ，值得庆幸的是，浏览器使用此视觉调整后的位置（也就是进入视口时）来计算何时“粘贴”链接。 
+
+外层元素`.back-to-top-wrapper` 样式
+
+```less
+// 滚动条距离<main>多远出现 “link”
+
+$scrollLength: 100vh;
+
+.back-to-top-wrapper {
+  // 轨迹
+  // outline: 1px solid red;
+  position: absolute;
+  top: $scrollLength;
+  right: 0.25rem;
+  bottom: -5em;
+  // 需要在不支持 "sticky "的浏览器中获得最佳支持。
+  width: 3em;
+  // 禁用默认鼠标事件
+  pointer-events: none;
+}
+```
+
+`pointer-events: none;`这个个定义可能对你来说也很陌生，这本质上是让交互事件，比如点击等交互事件在元素中失效，这样就会阻止一些默认事件发生，比如`a`标签跳转。
+
+有了这些，我们现在可以看到链接在最初的视口内容下面的内容上有一点重叠。让我们在`<main>`中添加一些样式来防止这种重叠，并添加`position:relative`， 这对于外层的元素`absolute`属性是必须的。
+
+``` less
+main {
+  // 为轨迹留一些空间
+  padding: 0 3rem;
+  position: relative;
+  max-width: 50rem;
+  margin: 2rem auto;
+
+  // 可选，如果最后一个元素是块项，则清除margin。 
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+```
+
+`.back-to-top-link` 核心`link`样式
+
+```less
+.back-to-top-link {
+  // `sticky` 不生效时 `fixed` 备选
+  position: fixed;
+  //  首选position属性，兼容需要前缀支持，在Safari上不支持。
+  // @link https://caniuse.com/#search=position%3A%20sticky
+  position: sticky;
+  // 恢复默认事件
+  pointer-events: all;
+  // “sticky” 生效时距窗口顶部距离，如果是“fixed”则始终是相对窗口顶部距离
+  top: calc(100vh - 5rem);
+}
+```
+
+在浏览器支持`sticky`属性时会出现最理想的效果，否则`position: fixed;`生效，"Back to Top" 会一直存在窗口中
+
+注意，我们还用` pointer-events: all;`还原了指针事件，这样，与链接的交互实际上是可以工作的。
+
+codepen：
+
+[https://codepen.io/5t3ph/pen/OJyyqWR](https://codepen.io/5t3ph/pen/OJyyqWR)
+
+## 已知问题
+
+在有简短内容场景中，会有一些问题，你可能会想利用`overflow: hidden`属性来解决，但不幸的是，这使得`position: sticky`无法完全工作☹️，所以在真实的开发中你应该区分出这种情况，或者在模板中注入文章之前执行一个计算来确定文章是否满足长度要求。
