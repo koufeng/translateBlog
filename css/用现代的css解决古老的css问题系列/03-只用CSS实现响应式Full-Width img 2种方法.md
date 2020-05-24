@@ -12,7 +12,7 @@ background-size: cover;
 
 另一种方法是利用标准的`img`标签，并使用了神奇的属性：
 
-```css
+```scss
 object-fit: cover;
 ```
 
@@ -40,7 +40,7 @@ object-fit: cover;
 
 对应`CSS`如下, 其中`padding-bottom`是一个特殊的技巧，使`div`背景图片保持16:9的比例。
 
-```css
+```scss
 .card__img {
   background-size: cover;
   background-position: center;

@@ -27,7 +27,7 @@ codePen:
 
 通过以下方式实现
 
-```css
+```scss
 body {
   min-height: 100vh;
   display: flex;
@@ -62,7 +62,7 @@ main {
 
 通过以下方式实现
 
-```css
+```scss
 body {
   min-height: 100vh;
   display: grid;

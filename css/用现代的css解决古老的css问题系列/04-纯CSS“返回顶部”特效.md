@@ -55,7 +55,7 @@ html 内容：
 
 第一步很简单，添加下面的css： 
 
-```less
+```scss
 // Smooth scrolling IF user doesn't have a preference due to motion sensitivities
 @media screen and (prefers-reduced-motion: no-preference) {
   html,
@@ -75,7 +75,7 @@ html 内容：
 
 在实现之前，让我们先给这个链接做一些基本的样式。为了好玩，我用了一个`emoji`，但你可以换成SVG图标。
 
-```less
+```scss
 .back-to-top-link {
   display: inline-block;
   text-decoration: none;
@@ -102,7 +102,7 @@ html 内容：
 
 外层元素`.back-to-top-wrapper` 样式
 
-```less
+```scss
 // 滚动条距离<main>多远出现 “link”
 
 $scrollLength: 100vh;
@@ -125,7 +125,7 @@ $scrollLength: 100vh;
 
 有了这些，我们现在可以看到链接在最初的视口内容下面的内容上有一点重叠。让我们在`<main>`中添加一些样式来防止这种重叠，并添加`position:relative`， 这对于外层的元素`absolute`属性是必须的。
 
-``` less
+``` scss
 main {
   // 为轨迹留一些空间
   padding: 0 3rem;
@@ -142,7 +142,7 @@ main {
 
 `.back-to-top-link` 核心`link`样式
 
-```less
+```scss
 .back-to-top-link {
   // `sticky` 不生效时 `fixed` 备选
   position: fixed;

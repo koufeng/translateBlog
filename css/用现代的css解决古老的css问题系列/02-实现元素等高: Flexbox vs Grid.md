@@ -8,7 +8,7 @@
 
 当 `flexbox` 出现时就会实现这种效果
 
-``` css
+```scss
 .flexbox {
   display: flex;
 }
@@ -20,7 +20,7 @@
 
 修改方案：
 
-```less
+```scss
 .flexbox {
   display: flex;
 
@@ -37,7 +37,7 @@ Grid 解决方案
 
 `Grid`拥有类似的样式
 
-``` less
+``` scss
 .grid {
   display: grid;
   // 切换默认的轴默认属性
@@ -47,7 +47,7 @@ Grid 解决方案
 
 与`flexbox`相似,子元素会自动为等高的效果，同样子元素也需要定义高度，像`flexbox`一样
 
-```less
+```scss
 .grid {
   display: grid;
   grid-auto-flow: column;
@@ -72,7 +72,7 @@ Grid 解决方案
 
 更新我们`grid`方案，以处理定义每行最多3列的问题，简单如下：
 
-```less
+```scss
 &.col-3 {
   grid-gap: $col_gap;
   grid-template-columns: repeat(3, 1fr);
@@ -81,7 +81,7 @@ Grid 解决方案
 
 `flexbox`方案：
 
-```less
+```scss
 $col_gap: 1rem;
 
 .flexbox.col-3 {
