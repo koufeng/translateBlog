@@ -1,3 +1,5 @@
+# 纯CSS“返回顶部”特效
+
 > 原文地址: 《[Pure CSS Smooth-Scroll "Back to Top"](https://moderncss.dev/pure-css-smooth-scroll-back-to-top/)》
 
 "Back to top"链接现在可能不经常使用，但有两个现代CSS技术很好地展示了它的特点。
