@@ -1,12 +1,12 @@
 # 将footer固定在底部: Flexbox vs Grid
 
-> 原文地址: 《[Keep the Footer at the Bottom: Flexbox vs. Grid](https://aralroca.com/blog/from-node-to-deno)》
+> 原文地址: 《[Keep the Footer at the Bottom: Flexbox vs. Grid](https://moderncss.dev/keep-the-footer-at-the-bottom-flexbox-vs-grid/)》
+
+> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第一篇
 
 多年来，我不断地参考 Matthew James Taylor 的这篇[文章](https://matthewjamestaylor.com/bottom-footer)，寻找一种方法，无论页面内容的长度如何，都能让网页`footer`保持在页面底部。这个方法依赖于设置一个footer高度，虽然不能扩展，但在 BF（Flexbox之前）是一个非常好的解决方案。
 
-如果你主要处理SPA开发，你可能会依然被这个问题困扰，但是它依然存在于：
-
-[//]: <If you mostly deal with SPA development, you may be confused about why this problem is still around, but it's still a possibility to find your footer floating up for:>
+如果你主要处理SPA(单页面应用)开发，你可能会依然被这个问题困扰，你所开发的页面底部可能会漂起来，存在于：
 
 - 登录页
 - 博客/新闻文章（无广告...）
