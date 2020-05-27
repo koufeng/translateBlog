@@ -2,6 +2,8 @@
 
 > 原文地址: 《[CSS-Only Full-Width Responsive Images 2 Ways](https://moderncss.dev/css-only-full-width-responsive-images-2-ways/)》
 
+> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第3篇
+
 以前在`jquery`流行的时候用于响应式背景图片的最受欢迎的工具是[Backstretch jQuery](https://www.jquery-backstretch.com/)插件。
 
 在`background-size`属性得到广泛支持之前（即IE<9总市场份额下降了）我在大约30个项目中使用了此插件。
@@ -23,6 +25,8 @@ object-fit: cover;
 ## background-size: cover 方案
 
 [//]:<> (A decade of my background was creating highly customized WordPress themes and plugins for enterprise websites. So using the example of templated cards, here's how you might set up using the background-size: cover solution.)
+
+我十年的工作背景是为企业网站创建高度定制的WordPress主题和插件，所以用模板化的卡片为例，下面是你可能使用的`background-size: cover`解决方案来设置。
 
 首先是`HTML`，将图片作为背景插入样式属性中。鼓励用一个`ria-label`来代替普通`img`标签上的`alt`属性。
 
@@ -105,4 +109,4 @@ codepen:
 
 选择 `object-fit`方式:
 
-- 需要使用标准`img`标签语义。
+- 为了保持图像提供的所有语义，使用标准的img对你的上下文来说是最好的。
