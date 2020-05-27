@@ -2,10 +2,12 @@
 
 > 原文地址: 《[Pure CSS Smooth-Scroll "Back to Top"](https://moderncss.dev/pure-css-smooth-scroll-back-to-top/)》
 
+> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第4篇
+
 "Back to top"链接现在可能不经常使用，但有两个现代CSS技术很好地展示了它的特点。
 
-- position: sticky
-- scroll-behavior: smooth
+- `position: sticky`
+- `scroll-behavior: smooth`
 
 2011年在[Web Designer Wall](https://web.archive.org/web/20110413163553/https://webdesignerwall.com/tutorials/animated-scroll-to-top)利用`jQuery`实现 "back to top" 效果
 
@@ -15,16 +17,17 @@
 
 ![top](https://tva1.sinaimg.cn/large/007S8ZIlly1gf1kea82lbg30jz05nu0c.gif)
 
-## 关于 position: sticky
+## 关于 `position: sticky`
 
 这个新的 `position`属性值在[caniuse](https://caniuse.com/#search=position%3A%20sticky)上描述如下：
 
-> 保持元素的`position`为 "fixed"或 "relative"，这取决于它在视口中的显示方式,
+> 保持元素的`position`为 "fixed"或 "relative"，这取决于它在视窗中的显示方式,
+
 在元素滚动时表现为`fixed`
 
 `caniuse data`的另一个重要注意事项是，你需要提供它的前缀以获得最好的支持, 我们在`Back to top`时不是十分优雅的实现`position: fixed`的效果
 
-## 关于scroll-behavior: smooth
+## 关于 `scroll-behavior: smooth`
 
 这是一个非常新的属性，并且[支持相对较低](https://caniuse.com/#search=scroll-behavior)。这个确切的定义要求滚动行为，特别是在选择锚点链接时，滚动行为会有一个平滑的动画外观，而不是默认的、更突兀的即时跳转。
 
@@ -53,9 +56,9 @@ html 内容：
 
 我们还可以在`<header>`中添加`id="top"`，并使用该锚点作为回顶部链接的`href`值。如果你只想滚动到`<main>`的顶部，当然你也可以将这个`id`放在顶部其他位置
 
-## 添加 smooth-scrolling
+## 添加 `smooth-scrolling`
 
-第一步很简单，添加下面的css： 
+第一步很简单，添加下面的css：
 
 ```scss
 // Smooth scrolling IF user doesn't have a preference due to motion sensitivities
@@ -69,11 +72,11 @@ html 内容：
 
 原来的解决方案没有考虑到`prefers-reduced-motion`的问题。
 
-之前，我有一篇`CSS-Tricks`的文章，是用`jQuery`和`vanilla JS`完成的。这篇文章已经有一段时间了，感谢那个团队在有新解决方法的时候不断地更新这样的文章，👍
+之前，我有一篇`CSS-Tricks`的文章，是用`jQuery`和`vanilla JS`完成的。这篇文章已经有一段时间了，感谢那个团队在有新解决方法的时候不断地更新这样的文章👍
 
 我发现了一些奇怪的地方，比如当你访问一个在URL中包含锚点的页面时，它仍然会执行平滑滚动，这对你的场景可能并不可取。
 
-## "Back to Top" 锚点 样式
+## 添加锚点"Back to Top"
 
 在实现之前，让我们先给这个链接做一些基本的样式。为了好玩，我用了一个`emoji`，但你可以换成SVG图标。
 

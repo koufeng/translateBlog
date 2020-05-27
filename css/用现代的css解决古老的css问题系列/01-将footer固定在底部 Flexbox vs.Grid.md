@@ -2,7 +2,7 @@
 
 > 原文地址: 《[Keep the Footer at the Bottom: Flexbox vs. Grid](https://moderncss.dev/keep-the-footer-at-the-bottom-flexbox-vs-grid/)》
 
-> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第一篇
+> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第1篇
 
 多年来，我不断地参考 Matthew James Taylor 的这篇[文章](https://matthewjamestaylor.com/bottom-footer)，寻找一种方法，无论页面内容的长度如何，都能让网页`footer`保持在页面底部。这个方法依赖于设置一个footer高度，虽然不能扩展，但在 BF（Flexbox之前）是一个非常好的解决方案。
 
