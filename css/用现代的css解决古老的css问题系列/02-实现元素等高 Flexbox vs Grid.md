@@ -1,7 +1,9 @@
 # 实现元素等高: Flexbox vs. Grid
 
 > 原文地址: 《[Equal Height Elements: Flexbox vs. Grid](https://moderncss.dev/equal-height-elements-flexbox-vs-grid/)》
-
+> 
+> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第一篇
+> 
 很久以前（大约7年前），我写了一个jQuery插件来计算等高列的效果。它确保了在一个非常特殊的情况下，无论内容的长度如何，都能保持内容框的高度相等。当时浮动的布局方式并没有解决这个问题
 
 ## Flexbox 解决方案

@@ -24,6 +24,8 @@ object-fit: cover;
 
 [//]:<> (A decade of my background was creating highly customized WordPress themes and plugins for enterprise websites. So using the example of templated cards, here's how you might set up using the background-size: cover solution.)
 
+我十年的工作背景是为企业网站创建高度定制的WordPress主题和插件，所以用模板化的卡片为例，下面是你可能使用的`background-size: cover`解决方案来设置。
+
 首先是`HTML`，将图片作为背景插入样式属性中。鼓励用一个`ria-label`来代替普通`img`标签上的`alt`属性。
 
 ```html
@@ -105,4 +107,4 @@ codepen:
 
 选择 `object-fit`方式:
 
-- 需要使用标准`img`标签语义。
+- 为了保持图像提供的所有语义，使用标准的img对你的上下文来说是最好的。
