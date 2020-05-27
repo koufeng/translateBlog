@@ -163,7 +163,7 @@ main {
 
 在浏览器支持`sticky`属性时会出现最理想的效果，否则`position: fixed;`生效，"Back to Top" 会一直存在窗口中
 
-注意，我们还用` pointer-events: all;`还原了指针事件，这样，与链接的交互实际上是可以工作的。
+注意，我们还用`pointer-events: all;`还原了指针事件，这样，与链接的交互实际上是可以工作的。
 
 codepen：
 

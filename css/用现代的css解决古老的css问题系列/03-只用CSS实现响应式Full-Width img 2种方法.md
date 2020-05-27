@@ -2,7 +2,7 @@
 
 > 原文地址: 《[CSS-Only Full-Width Responsive Images 2 Ways](https://moderncss.dev/css-only-full-width-responsive-images-2-ways/)》
 
-> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第2篇
+> 我从事前端开发13年有余，一直致力于研究现代CSS解决方案，这是我该系列文章的第3篇
 
 以前在`jquery`流行的时候用于响应式背景图片的最受欢迎的工具是[Backstretch jQuery](https://www.jquery-backstretch.com/)插件。
 
