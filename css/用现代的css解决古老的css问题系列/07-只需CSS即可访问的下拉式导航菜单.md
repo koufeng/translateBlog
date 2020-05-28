@@ -8,21 +8,21 @@
 
 我们将探讨：
 
-- 动画与CSS过渡和转换
+- 动画与`CSS``transition`和`transform`
 
-- 使用 :focus-within伪类
+- 使用` :focus-within`伪类
 
-- 用于定位的CSS grid
+- 用于定位的 `CSS grid`
 
-- 动态定心技术
+- 动态居中技术
 
-- 下拉式菜单的可访问性考虑
+- 下拉菜单的可访问性注意事项
 
 ***
 
 如果你曾经为 "鼠标悬停 "的概念而烦恼，那么这个升级版就是为你准备的!
 
-在我们讲太深之前还是要提醒你，虽然我们的技术100%只使用了CSS，但有些用例可能会因为使用了一些香草JS而受益，尤其是为移动用户创造更好的体验。还有一个关键的功能需要一个[polyfill](https://allyjs.io/api/style/focus-within.html)来实现这个功能- `:focus-within` -[以获得最可靠的支持。](https://caniuse.com/#search=focus-within)。但相比于以往需要一个或多个jQuery插件来完成的日子，我们还是有了很大的进步。那么，让我们开始吧!
+在我们讲太深之前还是要提醒你，虽然我们的技术100%只使用了CSS，但有些用例可能会因为使用了一些`vanilla-js`而受益，尤其是为移动用户创造更好的体验。还有一个关键的功能需要一个[polyfill](https://allyjs.io/api/style/focus-within.html)来实现这个功能- `:focus-within` -[以获得最可靠的支持。](https://caniuse.com/#search=focus-within)。但相比于以往需要一个或多个jQuery插件来完成的日子，我们还是有了很大的进步。那么，让我们开始吧!
 
 如果你没有使用过Sass，你可能需要花5分钟的时间来了解[Sass的嵌套语法](https://sass-lang.com/guide#topic-3)，这样才能最容易理解给出的代码示例。
 
@@ -49,19 +49,19 @@
 
 这是导航链接的语义标准。这种结构是灵活的，可以在你的页面上的任何地方使用，所以它可以像主导航一样轻松地成为侧边栏的目录。
 
-一开始，我们就实现了两个专门针对无障碍的功能:
+一开始，我们就实现了两个专门针对可访问性的功能:
 
 1.`aria-label`在`<nav>`上，当辅助技术被用来通过地标导航页面时，帮助识别它的目的。
 
-2.`ria-labelledby`在`.dropdown__menu`上，链接到`.dropdown__title`的id，让辅助技术读取类似于 "链接，甜甜甜圈4项2级 "的内容，其中 "甜甜圈 "是下拉标题的值
+2.`ria-labelledby`在`.dropdown__menu`上，链接到`.dropdown__title`的id，让辅助技术读取类似于 "link, Donuts list Sweets 4 items level 2 "的内容，其中 "Sweets"是下拉标题的值
 
-我们（大部分）默认的起始外观如下:
+我们（大部分）默认的初始样式下:
 
 ![starting appearance](https://dev-to-uploads.s3.amazonaws.com/i/ph6ne7veudghpvnajgp6.png)
 
 ## 最初的导航样式
 
-首先，我们将给`nav`赋予一些容器样式，并将其定义为网格容器。然后，我们将删除`nav ul`和`nav ul li`中的默认列表样式。
+首先，我们将给`nav`赋予一些容器样式，并将其定义为`grid`容器。然后，我们将删除`nav ul`和`nav ul li`中的默认列表样式。
 
 ```scss
 nav {
@@ -91,7 +91,6 @@ nav {
 ```scss
 nav {
   // ...existing styles
-
   > ul {
     grid-auto-flow: column;
 
@@ -102,7 +101,7 @@ nav {
 }
 ```
 
-通过使用子组合器选择器`>`，我们定义了顶层的`ul`，它是`nav`的直接子元素，应该把它的`grid-auto-flow`切换到`column`，这样可以有效地把它更新为沿`x-axis`。然后我们给顶层的`li`元素添加margin，让它的定义更多一些。现在，未来的下拉项出现在 "Sweets "菜单的下方，并且更清楚地显示了它的子项。
+通过使用子组合器选择器`>`，我们定义了顶层的`ul`，它是`nav`的直接子元素，应该把它的`grid-auto-flow`切换到`column`，这样可以有效地把它更新为沿`x-axis`。然后我们给顶层的`li`元素添加`margin`，让它的定义更多一些。现在，未来的下拉项出现在 "Sweets"菜单的下方，并且更清楚地显示了它的子项。
 
 ![](https://dev-to-uploads.s3.amazonaws.com/i/y6ikx5v9h84lm44cfksp.png)
 
@@ -113,7 +112,7 @@ nav {
   > ul {
 
     > li {
-      // All links contained in the li
+      // 所有的链接都包含在LI中
       a,
       .dropdown__title {
         text-decoration: none;
@@ -122,7 +121,7 @@ nav {
         color: blue;
         font-size: 1.125rem;
       }
-      // Only direct links contained in the li
+      // 只有直接包含在里边的链接
       > a,
       .dropdown__title {
         padding: 1rem 0.5rem;
@@ -139,7 +138,7 @@ nav {
 
 到目前为止，我们一直在依赖元素选择器，但我们将为下拉菜单引入类选择器，因为在一个给定的导航列表中可能会有多个选择器。
 
-我们首先要对`.dropdown__menu`和它的链接进行风格化处理，通过定位和动画来帮助更清晰地识别它。
+我们首先要对`.dropdown__menu`和它的链接进行样式设置，通过定位和动画来帮助更清晰地识别它。
 
 ```scss
 .dropdown {
@@ -179,11 +178,11 @@ nav {
 
   position: absolute;
 
-  // Pull up to overlap the parent list item very slightly
+  // 向上拉以稍微重叠父列表项
   top: calc(100% - 0.25rem);
-  // Use the left from absolute position to shift the left side
+  // 用绝对位置的左手从绝对位置向左移动
   left: 50%;
-  // Use translateX to shift the menu 50% of it's width back to the left 
+  // 使用translateX将菜单宽度的50%移回左边
   transform: translateX(-50%);
 }
 ```
@@ -208,7 +207,7 @@ nav {
 
 在显示下拉菜单之前，我们需要将其隐藏起来，所以我们将使用隐藏样式作为默认状态。
 
-你的第一直觉可能是 `display: none`，但这将我们锁定了优雅的动画过渡。
+你的第一直觉可能是 `display: none`，但这使我们无法优雅地为过渡设置动画。
 
 下一步，你可以尝试简单的`opacity: 0`，这样可以明显地隐藏它，但会留下 "幽灵链接"，因为元素仍然有计算高度。
 
@@ -223,7 +222,7 @@ nav {
 }
 ```
 
-我们添加opacity，为了以后能有更平滑的效果不能全部干到0。
+我们添加`opacity`，但不是全部加到0，以便以后能有更平滑的效果。
 
 而且，我们更新了`transform`，包括`rotateX(-90deg)`，这将使菜单在3D空间中旋转到90度 "后退"。这将有效地去除高度，并在显示时形成一个有趣的过渡。另外，你会注意到我们添加的`transform-origin`属性，它是为了更新应用变换的周围点，而不是默认的水平和垂直中心。
 
@@ -236,7 +235,7 @@ nav {
 }
 ```
 
-## 揭开下拉菜单
+## 揭开下拉菜单的神秘面纱
 
 有了这些事先的设置，就可以像简洁地完成`hover`和`focus`上的下拉菜单:
 
@@ -267,7 +266,7 @@ nav {
 
 ## 处理悬停意向
 
-当我刚开始战斗下拉菜单时，我主要是为IE7创建下拉菜单。在一个大项目中，有几个团队成员问我 "如果我只是滚动/鼠标点击菜单，你能阻止菜单出现吗？"。经过一番搜索，我终于找到了一个解决方案，hoverIntent jQuery plugin.
+当我刚开始战斗下拉菜单时，我主要是为IE7创建下拉菜单。在一个大项目中，有几个团队成员问我 "如果我只是滚动/鼠标点击菜单，你能阻止菜单出现吗？"。经过一番搜索，我终于找到了一个解决方案，[hoverIntent jQuery plugin](https://briancherne.github.io/jquery-hoverIntent/).
 
 我需要这样设置，因为既然我们使用的是`transition`，我们还可以添加一个非常轻微的延迟。这将防止 "驱动式 "鼠标翻转时触发下拉动画。
 
@@ -323,7 +322,7 @@ nav {
 
 如果你在手机上尝试一下我们到目前为止制作的东西，你将无法打开菜单。
 
-由于CSS中没有`:click`或`:touch`伪类，所以我们需要让`.dropdown__title`能够接收focus。
+由于CSS中没有`:click`或`:touch`伪类，所以我们需要让`.dropdown__title`能够接收`focus`。
 
 我们可以把它变成一个按钮，因为那是一个原生的可聚焦元素，但我们也可以把`tabindex="-1"`应用到`span`中。这也会向浏览器表明该元素能够接收到焦点，这使得我们的`:focus-within`选择器能够工作。
 
