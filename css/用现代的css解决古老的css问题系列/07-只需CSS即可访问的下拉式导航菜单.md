@@ -30,7 +30,7 @@
 
 我们会继续加强，但这里是我们的起点结构。
 
-```less
+```html
 <nav aria-label="Main Navigation">
   <ul>
     <li><a href="#">About</a></li>
@@ -63,7 +63,7 @@
 
 首先，我们将给`nav`赋予一些容器样式，并将其定义为网格容器。然后，我们将删除`nav ul`和`nav ul li`中的默认列表样式。
 
-```less
+```scss
 nav {
   background-color: #eee;
   padding: 0 1rem;
@@ -88,7 +88,7 @@ nav {
 
 我们已经失去了层次性的定义，但我们可以从以下几点开始把它找回来。
 
-```less
+```scss
 nav {
   // ...existing styles
 
@@ -108,7 +108,7 @@ nav {
 
 接下来，我们先给所有的链接以及`.dropdown__title`加点样式，然后除了`.dropdown__title`外，只给顶层链接加点样式:
 
-```less
+```scss
 nav {
   > ul {
 
@@ -141,7 +141,7 @@ nav {
 
 我们首先要对`.dropdown__menu`和它的链接进行风格化处理，通过定位和动画来帮助更清晰地识别它。
 
-```less
+```scss
 .dropdown {
   position: relative;
 
@@ -173,7 +173,7 @@ nav {
 
 我们要带出一个居中的技巧，将菜单中心对准列表项:
 
-```less
+```scss
 .dropdown__menu {
   // ... existing styles
 
@@ -214,7 +214,7 @@ nav {
 
 相反，我们将使用`opacity `和`transform`:
 
-```less
+```scss
 .dropdown__menu {
   // ... existing styles
   transform: rotateX(-90deg) translateX(-50%);
@@ -229,7 +229,7 @@ nav {
 
 在进行揭示之前，我们需要添加一个`transition`。我们将其添加到`.dropdown__menu`中，这样它就可以同时适用于开关`hover`/`aka`，又称 "向前 "和 "向后"。
 
-```less
+```scss
 .dropdown__menu {
   // ... existing styles
   transition: 280ms all ease-out;
@@ -240,7 +240,7 @@ nav {
 
 有了这些事先的设置，就可以像简洁地完成`hover`和`focus`上的下拉菜单:
 
-```less
+```scss
 .dropdown {
   // ... existing styles
 
@@ -273,7 +273,7 @@ nav {
 
 延迟作为第三个值加在指定哪些属性过渡之后、过渡时序函数之前，所以延迟是作为第三个值加的:
 
-```less
+```scss
 .dropdown__menu {
   // ... existing styles
   transition: 280ms all 120ms ease-out;
@@ -294,7 +294,7 @@ nav {
 
 为了添加这个，我们将更新`.dropdown__title`样式。我们将把它定义为一个内`inline-flex`，然后创建一个`:after`元素，使用边框技巧创建一个向下箭头。我们使用了`translateY()`的破折号将其与我们的文本进行对齐:
 
-```less
+```scss
 .dropdown {
   // ... existing styles
 
@@ -329,7 +329,7 @@ nav {
 
 最新数据:
 
-```less
+```html
 <span tabindex="-1" class="dropdown__title" id="dropdown-title">Sweets</span>
 ```
 
