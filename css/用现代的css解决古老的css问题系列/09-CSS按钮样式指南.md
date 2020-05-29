@@ -1,4 +1,4 @@
-# CSS按钮造型指南
+# CSS按钮样式指南
 
 > 原文地址: 《[CSS Button Styling Guide](https://moderncss.dev/css-button-styling-guide/)》
 
@@ -24,7 +24,7 @@
 
 > 《[Links vs. Buttons in Modern Web Applications](https://marcysutton.com/links-vs-buttons-in-modern-web-applications)》这篇优秀的文章让我了解了什么时候使用链接与按钮是合适的。
 
-我们将研究一下，在视觉上创建一个按钮外观的链接和按钮都需要哪些属性，以及为确保创建和使用无障碍的按钮所需的额外细节。
+我们将查看为`a`和`button`直观地创建按钮外观所需要的属性，以及为确保创建和使用无障碍的按钮所需要的额外细节。
 
 ***
 
@@ -47,7 +47,7 @@ html:
 
 > 注：通常情况下，我将Normalize重置应用于CodePens，但这节课我们要从头开始，学习按钮和链接的重置。使用Normalize或其他流行的复位方法可以为你做一些这样的事情。
 
-首先，我们在链接和按钮中加入按钮的类，只是为了强调本课的样式应用在哪里。
+首先，我们在链接和按钮中加入`button`类，只是为了强调本课的样式应用在哪里。
 
 ```html
 <a href="javascript:;" class="button">Button Link</a>
@@ -66,7 +66,7 @@ html:
 
 简而言之，这个规则可以防止像border和padding这样的东西扩大预期的元素大小。
 
-## 链接
+## `a`链接
 
 对于链接，我们只需要做一个重置就可以。
 
