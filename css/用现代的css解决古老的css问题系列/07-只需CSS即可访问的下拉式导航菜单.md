@@ -1,4 +1,4 @@
-# 只需CSS即可访问的下拉式导航菜单
+# 只需CSS的下拉式导航菜单
 
 > 原文地址: 《[CSS-Only Accessible Dropdown Navigation Menu](https://moderncss.dev/css-only-accessible-dropdown-navigation-menu/)》
 
@@ -8,9 +8,9 @@
 
 我们将探讨：
 
-- 动画与`CSS``transition`和`transform`
+- 动画与CSS`transition`和`transform`
 
-- 使用` :focus-within`伪类
+- 使用`:focus-within`伪类
 
 - 用于定位的 `CSS grid`
 
@@ -20,9 +20,9 @@
 
 ***
 
-如果你曾经为 "鼠标悬停 "的概念而烦恼，那么这个升级版就是为你准备的!
+如果你曾经为 "鼠标悬停"的概念而烦恼，那么这个升级版就是为你准备的!
 
-在我们讲太深之前还是要提醒你，虽然我们的技术100%只使用了CSS，但有些用例可能会因为使用了一些`vanilla-js`而受益，尤其是为移动用户创造更好的体验。还有一个关键的功能需要一个[polyfill](https://allyjs.io/api/style/focus-within.html)来实现这个功能- `:focus-within` -[以获得最可靠的支持。](https://caniuse.com/#search=focus-within)。但相比于以往需要一个或多个jQuery插件来完成的日子，我们还是有了很大的进步。那么，让我们开始吧!
+在我们讲太深之前还是要提醒你，虽然我们的技术100%只使用了CSS，但有些用例可能会因为使用了一些`vanilla-js`而受益，尤其是为移动用户创造更好的体验。还有一个关键的功能需要一个[polyfill](https://allyjs.io/api/style/focus-within.html)来实现这个功能- `:focus-within` -[以获得最可靠的支持](https://caniuse.com/#search=focus-within)。但相比于以往需要一个或多个jQuery插件来完成的日子，我们还是有了很大的进步。那么，让我们开始吧!
 
 如果你没有使用过Sass，你可能需要花5分钟的时间来了解[Sass的嵌套语法](https://sass-lang.com/guide#topic-3)，这样才能最容易理解给出的代码示例。
 
@@ -197,9 +197,11 @@ nav {
 
 但是，传统的`:focus`不会保持下拉菜单的打开状态。一旦初始触发器失去了焦点，键盘焦点仍然可以在下拉菜单中移动，但从视觉上看菜单将消失。
 
-### :focus-within
+### `:focus-within`
 
 有一个即将推出的伪类叫`:focus-within`，它正是我们所需要的，使之成为一个只支持CSS的下拉菜单。正如介绍中提到的，如果你需要支持IE < Edge 79，它确实需要一个[polyfill](https://allyjs.io/api/style/focus-within.html)。
+
+[转载自MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within)，下面是我的解释。
 
 >`:focus-within` CSS伪类代表一个已经接收到焦点的元素，或包含一个已经接收到焦点的元素。换句话说，它代表一个元素本身被 `:focus` 伪类匹配的元素，或有一个被 `:focus` 匹配的子元素。
 
@@ -211,7 +213,7 @@ nav {
 
 下一步，你可以尝试简单的`opacity: 0`，这样可以明显地隐藏它，但会留下 "幽灵链接"，因为元素仍然有计算高度。
 
-相反，我们将使用`opacity `和`transform`:
+相反，我们将使用`opacity`和`transform`:
 
 ```scss
 .dropdown__menu {
@@ -226,7 +228,7 @@ nav {
 
 而且，我们更新了`transform`，包括`rotateX(-90deg)`，这将使菜单在3D空间中旋转到90度 "后退"。这将有效地去除高度，并在显示时形成一个有趣的过渡。另外，你会注意到我们添加的`transform-origin`属性，它是为了更新应用变换的周围点，而不是默认的水平和垂直中心。
 
-在进行揭示之前，我们需要添加一个`transition`。我们将其添加到`.dropdown__menu`中，这样它就可以同时适用于开关`hover`/`aka`，又称 "向前 "和 "向后"。
+在进行显示之前，我们需要添加一个`transition`。我们将其添加到`.dropdown__menu`中，这样它就可以同时适用于开关`hover`/`focus`，又称 "向前"和 "向后"。
 
 ```scss
 .dropdown__menu {
@@ -326,7 +328,7 @@ nav {
 
 我们可以把它变成一个按钮，因为那是一个原生的可聚焦元素，但我们也可以把`tabindex="-1"`应用到`span`中。这也会向浏览器表明该元素能够接收到焦点，这使得我们的`:focus-within`选择器能够工作。
 
-最新数据:
+最新代码:
 
 ```html
 <span tabindex="-1" class="dropdown__title" id="dropdown-title">Sweets</span>
@@ -344,5 +346,4 @@ nav {
 
 这里是最后的结果，有了一些额外的样式，包括一个箭头来更直观地将菜单与链接项连接起来，在所有的导航链接上自定义焦点状态，以及`nav`上的`position: sticky`
 
-演示:
-https://codepen.io/5t3ph/embed/preview/MWaJePa?height=265&amp;theme-id=default&amp;default-tab=result&amp;user=5t3ph&amp;slug-hash=MWaJePa&amp;preview=true&amp;name=cp_embed_1
+演示: [CodePen](https://codepen.io/5t3ph/pen/MWaJePa)
