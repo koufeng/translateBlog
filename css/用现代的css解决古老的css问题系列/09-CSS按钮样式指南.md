@@ -25,12 +25,12 @@
 > 《[Links vs. Buttons in Modern Web Applications](https://marcysutton.com/links-vs-buttons-in-modern-web-applications)》这篇优秀的文章让我了解了什么时候使用链接与按钮是合适的。
 
 我们将查看为`a`和`button`直观地创建按钮外观所需要的属性，以及为确保创建和使用无障碍的按钮所需要的额外细节。
-
+  
 ***
 
 ## 重置默认样式
 
-基础样式--在Chrome浏览器中渲染的原生浏览器样式，目前唯一的变化是链接继承了主体上的自定义字体集，字体大小也做了调整。
+基础样式--在`Chrome`浏览器中渲染的原生浏览器样式，目前唯一的变化是链接继承了主体上的自定义字体集，字体大小也做了调整。
 
 ![](https://dev-to-uploads.s3.amazonaws.com/i/1b5duijnf8zdydz1ue1p.png)
 
@@ -41,11 +41,11 @@ html:
 <button type="button">Real Button</button>
 ```
 
-我使用了`javascript:;`字符串作为`href`值，这样我们就可以在不触发导航的情况下测试状态。同样，由于这个按钮不是用于表单提交，所以需要显式的按钮类型来防止触发get请求和页面重载。
+我使用了`javascript:;`字符串作为`href`值，这样我们就可以在不触发导航的情况下测试状态。同样，由于这个按钮不是用于表单提交，所以需要显式的按钮类型来防止触发`get`请求和页面重载。
 
 ## 重置样式
 
-> 注：通常情况下，我将Normalize重置应用于CodePens，但这节课我们要从头开始，学习按钮和链接的重置。使用Normalize或其他流行的复位方法可以为你做一些这样的事情。
+> 注：通常情况下，我将`Normalize`重置应用于`CodePens`，但这节课我们要从头开始，学习按钮和链接的重置。使用`Normalize`或其他流行的复位方法可以为你做一些这样的事情。
 
 首先，我们在链接和按钮中加入`button`类，只是为了强调本课的样式应用在哪里。
 
@@ -64,7 +64,7 @@ html:
 }
 ```
 
-简而言之，这个规则可以防止像border和padding这样的东西扩大预期的元素大小。
+简而言之，这个规则可以防止像`border`和`padding`这样的东西扩大预期的元素大小。(例如：25%的宽度保持25%，而不是25%+边框宽度+padding)
 
 ## `a`链接
 
@@ -102,9 +102,11 @@ button.button {
 
 ![](https://dev-to-uploads.s3.amazonaws.com/i/44rie4nuqfk5jwpkk6ff.png)
 
+感谢`@overflowhidden`提供了一种解决方案，以确保启用`Windows High Contrast`模式的用户可以感觉到按钮边框。
+
 ## display样式
 
-我发现在许多场景中效果最好的是`display: inline-flex`，它给了我们flexbox的内容对齐能力，但它存在于`in-line-block`行为中的DOM中。
+我发现在许多场景中效果最好的是`display: inline-flex`，它给了我们flexbox的内容对齐能力，但它存在于`inline-block`行为的DOM中。
 
 ```scss
 a.button,
@@ -115,7 +117,7 @@ button.button {
 }
 ```
 
-如果你在未来添加图标，或者对宽度进行限制，Flex对齐就会派上用场。
+如果你在未来添加图标，或者对宽度进行限制，`Flex`对齐就会派上用场。
 
 ## 视觉样式
 
@@ -152,7 +154,7 @@ button.button {
 
 我们故意遗漏了 "视觉 "分类下的一个属性，在看到进度截图时，你可能会忽略了这个属性：`padding`。
 
-因为`padding`是`盒模型`的一部分，所以我们把它留到了尺寸部分。
+因为`padding`是盒模型的一部分，所以我们把它留到了尺寸部分。
 
 让我们应用大小值，然后讨论一下：
 
