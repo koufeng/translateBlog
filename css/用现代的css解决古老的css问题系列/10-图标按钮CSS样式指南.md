@@ -4,7 +4,7 @@
 
 > 我从事前端开发 13 年有余，一直致力于研究现代 CSS 解决方案，这是我该系列文章的第十篇
 
-本指南将在上一集 "CSS 按钮样式指南 "的基础上，探讨图标按钮的使用案例。我们将涵盖图标+文本以及仅有图标的按钮。
+本指南将在上一集 "[CSS 按钮样式指南](https://moderncss.dev/css-button-styling-guide/)"的基础上，探讨图标按钮的使用案例。我们将涵盖图标+文本以及仅有图标的按钮。
 
 ---
 
@@ -47,8 +47,8 @@
 
 ```scss
 .button__icon {
-  // You may wish to have your icons appear larger
-  // or smaller in relation to the text
+  // 你可能希望你的图标看起来更大一些
+  // 或相对于文本而言，更小
   width: 0.9em;
   height: 0.9em;
 }
@@ -56,33 +56,32 @@
 
 ![](https://dev-to-uploads.s3.amazonaws.com/i/00g7uw9dfcb80pq2hikz.png)
 
-根据规范的默认值，包括路径在内的SVG部分有一个黑色的填充。为了调整这一点，我们将使用特殊的关键字currentColor，它将把按钮应用的文字颜色扩展到SVG中。
+根据[规范的默认值](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill#path)，包括路径在内的SVG部分有一个黑色的填充。为了调整这一点，我们将使用特殊的关键字`currentColor`，它将把按钮应用的文字颜色扩展到SVG中。
 
-```
+```scss
 .button__icon {
   // ...existing styles
   fill: currentColor;
 }
 ```
 
-![](https://dev-to-uploads.s3.amazonaws.com/i/0rs7lk1bmq6hqkcggekq.png)
+![fill](https://dev-to-uploads.s3.amazonaws.com/i/0rs7lk1bmq6hqkcggekq.png)
 
 最后需要调整的是在图标和按钮文字之间增加一点间距，我们将再次使用em单元进行调整。
 
-```
-
-```
-
+```scss
 .button__icon {
   // ...existing styles
   margin-right: 0.5em;
 }
 
-![](https://dev-to-uploads.s3.amazonaws.com/i/niqz77ol4aaskwjic6dw.png)
+```
+
+![button margin style](https://dev-to-uploads.s3.amazonaws.com/i/niqz77ol4aaskwjic6dw.png)
 
 我们需要添加一个实用程序类，让图标放在文字之后，或者是按钮的 "末端"（对于从右到左的语言）。我们将现有的边距清零，并将其翻转到左边。
 
-```
+```scss
 .button__icon {
   // ... existing styles
   
@@ -93,7 +92,7 @@
 }
 ```
 
-```
+```html
 <a href="javascript:;" class="button">
   Button Link
   <svg class="button__icon button__icon--end" xmlns="http://www.w3.org/2000/svg" 
@@ -109,7 +108,7 @@ viewBox="0 0 32 32" aria-hidden="true" focusable="false">
 
 我们要做的假设是，除了仅有图标的按钮外，我们还需要普通按钮（有或没有图标）。这很重要，因为我们将在一个新的类之外重用.button类，这样我们就不需要重新定义重置和基本视觉样式。覆盖是最小的。
 
-```
+```html
 <a href="javascript:;" class="button icon-button" aria-label="Icon-only Button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" 
 aria-hidden="true" class="icon-button__icon" aria-hidden="true" focusable="false">
@@ -120,13 +119,13 @@ aria-hidden="true" class="icon-button__icon" aria-hidden="true" focusable="false
 
 从图标+文字按钮的变化:
 
-1. 在a中增加了图标按钮类。
+1. 在`a`标签中增加了图标按钮类。
 
-2. 增加了一个ria-label="Icon-only Button"，因为我们删除了视觉文本，所以提供了一个无障碍的文本选择。
+2. 增加了一个`ria-label="Icon-only Button"`，因为我们删除了视觉文本，所以提供了一个无障碍的文本选择。
 
-3. 将SVG上的类调换为icon-button__icon。
+3. 将SVG上的类调换为`icon-button__icon`。
 
-> 重要的是：ria-label的值应该描述按钮的作用，而不是图标的作用。关于更多的阅读和其他提供文本替代的方法，请参阅Sara Soueidan的文章
+> 重要的是：`ria-label`的值应该描述按钮的作用，而不是图标的作用。关于更多的阅读和其他提供文本替代的方法，请参阅 [Sara Soueidan的文章](https://www.sarasoueidan.com/blog/accessible-icon-buttons/)
 
 下面是调整前的内容--一个看起来空荡荡的按钮，因为我们又回到了没有宽度的问题。
 
@@ -134,7 +133,7 @@ aria-hidden="true" class="icon-button__icon" aria-hidden="true" focusable="false
 
 首先，让我们创建一个新的类。由于CSS中的 "C"，这个规则需要放在.button规则之后。
 
-```
+```scss
 .icon-button {
   width: 2.5rem;
   height: 2.5rem;
@@ -153,7 +152,7 @@ aria-hidden="true" class="icon-button__icon" aria-hidden="true" focusable="false
 
 然后，我们在SVG图标和按钮边界之间添加一些填充物（同样是根据你的口味/设计要求），以增加一些呼吸空间。
 
-接下来，我们定义我们的icon-button__icon类。这里的区别在于我们希望宽度和高度与容器的宽度和高度一致，所以我们将其设置为100%。这样，我们只需要在.icon-button类上重新定义字体大小属性，就可以扩展到多个尺寸的图标按钮。
+接下来，我们定义我们的`icon-button__icon`类。这里的区别在于我们希望宽度和高度与容器的宽度和高度一致，所以我们将其设置为100%。这样，我们只需要在`.icon-button`类上重新定义字体大小属性，就可以扩展到多个尺寸的图标按钮。
 
 进展情况是这样的:
 
@@ -161,11 +160,11 @@ aria-hidden="true" class="icon-button__icon" aria-hidden="true" focusable="false
 
 这不是我们想要的，但我们可以通过调整.button类中的以下属性来解决这个问题。我们将使用:not()选择器来排除仅用于普通按钮的属性。
 
-```
+```scss
 .button {
   // ...existing styles
 
-  // Find these styles and update, not duplicate:
+  // 找到这些样式并更新，不要重复。
   &:not(.icon-button) {
     padding: 0.25em 0.75em;
     min-width: 10ch;
@@ -174,12 +173,12 @@ aria-hidden="true" class="icon-button__icon" aria-hidden="true" focusable="false
 }
 ```
 
-现在我们有了我们要找的东西。
+现在我们有了我们想要的：
 
 ![](https://dev-to-uploads.s3.amazonaws.com/i/aqknn8adugm9vn63c091.png)
 
-## deno
+## demo
 
-包括使用上一集中创建的.button--small类，以及一个 "真正的按钮 "来验证样式对这两个元素的作用。
+包括使用上一集中创建的`.button--small`类，以及一个 "真正的按钮 "来验证样式对这两个元素的作用。
 
 https://codepen.io/5t3ph/embed/preview/ExVpVJa?height=265&amp;theme-id=default&amp;default-tab=result&amp;user=5t3ph&amp;slug-hash=ExVpVJa&amp;preview=true&amp;name=cp_embed_1
